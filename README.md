@@ -44,11 +44,9 @@ When creating a tweet, access rules can be defined as follows:
 ```json
 {
   "parent_id": "71960fa7-9801-4d5d-8ae5-3713d7108688",
-  // Parent Id
   "location": "London, UK",
-  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tower Bridge arcu vehicula semper. Suspendisse potenti. Hyde Park aliquet magna eu, malesuada ex. In Covent Garden, porttitor nisl non ligula hendrerit, et eleifend enim gravida.",
+  "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
   "category": "SPORT",
-  // Options: TECH, SPORT, FINANCE, NEWS
   "hashtags": [
     "london",
     "lorem",
@@ -131,16 +129,34 @@ Design (DDD)** were implemented as much as time allowed.
 
 ## Getting Started
 
+### Prerequisites
+
 1. Clone the repository.
-2. Set up your environment variables (refer to `.env.example`).
-3. Build and run the application:
+2. Copy the `.env.example` file to `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+
+### Steps to Run
+
+1. Navigate to the `cicd/dev` directory.
+2. Build and run the application with Docker Compose:
    ```bash
    docker-compose up --build
    ```
-4. For local development, ensure you have `pnpm` installed. Run the project using:
+3. Start the application in development mode:
    ```bash
    pnpm run start:dev
    ```
-5. Import the Postman collection from the `docs` folder to test endpoints.
+4. Run database migrations to set up the schema:
+   ```bash
+   pnpm run migrations
+   ```
+5. Add sample users to the `users` table for testing purposes.
 
 ---
+
+## Testing the API
+
+- The **Postman collection** and its related environment file are included in the `documents` directory.
+- Import these files into Postman to test the API endpoints seamlessly.

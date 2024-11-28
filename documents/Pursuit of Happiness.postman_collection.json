@@ -1,0 +1,690 @@
+{
+	"info": {
+		"_postman_id": "234bca6a-329d-4346-a81d-04bd37d58c30",
+		"name": "Pursuit of Happiness",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19994955",
+		"_collection_link": "https://ofood-backend.postman.co/workspace/OFOOD~f3edeac4-af31-4a01-b29c-aa9f79f91188/collection/19994955-234bca6a-329d-4346-a81d-04bd37d58c30?action=share&source=collection_link&creator=19994955"
+	},
+	"item": [
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Invitations",
+					"item": [
+						{
+							"name": "Get My Received Invitations",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/profile/5/invitations?page=1&size=10",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"profile",
+										"5",
+										"invitations"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Open an Invitation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"action\": \"OPENED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/profile/2/invitations/1",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"profile",
+										"2",
+										"invitations",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Accept an Invitation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"action\": \"ACCEPTED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/profile/5/invitations/5",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"profile",
+										"5",
+										"invitations",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Reject an Invitation",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"action\": \"REJECTED\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/profile/2/invitations/1",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"profile",
+										"2",
+										"invitations",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Public",
+			"item": [
+				{
+					"name": "Feeds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_RESTful_URL}}/public/wassup/2?location=tehran/iran&page=1&size=10",
+							"host": [
+								"{{BASE_RESTful_URL}}"
+							],
+							"path": [
+								"public",
+								"wassup",
+								"2"
+							],
+							"query": [
+								{
+									"key": "author_id",
+									"value": "2",
+									"disabled": true
+								},
+								{
+									"key": "hashtag",
+									"value": "joke",
+									"disabled": true
+								},
+								{
+									"key": "parent_tweet_id",
+									"value": "71960fa7-9801-4d5d-8ae5-3713d7108688",
+									"disabled": true
+								},
+								{
+									"key": "category",
+									"value": "NEWS",
+									"description": "TECH, SPORT, FINANCE, NEWS",
+									"disabled": true
+								},
+								{
+									"key": "location",
+									"value": "tehran/iran"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Available Actions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_RESTful_URL}}/public/wassup/2/tweets/cc3b63d7-debb-4e8d-a4fb-7dca1aac3110/actions",
+							"host": [
+								"{{BASE_RESTful_URL}}"
+							],
+							"path": [
+								"public",
+								"wassup",
+								"2",
+								"tweets",
+								"cc3b63d7-debb-4e8d-a4fb-7dca1aac3110",
+								"actions"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Groups",
+					"item": [
+						{
+							"name": "Invitations",
+							"item": [
+								{
+									"name": "Get Invitations",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BASE_RESTful_URL}}/authors/1/groups/2/invitations",
+											"host": [
+												"{{BASE_RESTful_URL}}"
+											],
+											"path": [
+												"authors",
+												"1",
+												"groups",
+												"2",
+												"invitations"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "2",
+													"disabled": true
+												},
+												{
+													"key": "size",
+													"value": "1",
+													"disabled": true
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Send New Invitation",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"user_id\": 3\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_RESTful_URL}}/authors/1/groups/3/invitations",
+											"host": [
+												"{{BASE_RESTful_URL}}"
+											],
+											"path": [
+												"authors",
+												"1",
+												"groups",
+												"3",
+												"invitations"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Cancel Invitation",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"something else\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_RESTful_URL}}/authors/1/groups/1/invitations/3",
+											"host": [
+												"{{BASE_RESTful_URL}}"
+											],
+											"path": [
+												"authors",
+												"1",
+												"groups",
+												"1",
+												"invitations",
+												"3"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Members",
+							"item": [
+								{
+									"name": "[todo] Get Active Members",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{BASE_RESTful_URL}}/authors/1/groups/1/members?page=1&size=10",
+											"host": [
+												"{{BASE_RESTful_URL}}"
+											],
+											"path": [
+												"authors",
+												"1",
+												"groups",
+												"1",
+												"members"
+											],
+											"query": [
+												{
+													"key": "page",
+													"value": "1"
+												},
+												{
+													"key": "size",
+													"value": "10"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "[todo] Remove Member",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"name\": \"something else\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{BASE_RESTful_URL}}/authors/123456/groups/1/members/1",
+											"host": [
+												"{{BASE_RESTful_URL}}"
+											],
+											"path": [
+												"authors",
+												"123456",
+												"groups",
+												"1",
+												"members",
+												"1"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Get My Own Groups",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups?page=1&size=10",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get My Own Group",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups/3",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Group",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"parent_id\": 1,\n    \"name\": \"lastmile - product\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Group",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"parent_id\": 1,\n    \"name\": \"lastmile product\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups/3",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Detach Parent",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"something else\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups/3/detach-parent",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups",
+										"3",
+										"detach-parent"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Group",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"something else\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups/3",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups",
+										"3"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Tweets",
+					"item": [
+						{
+							"name": "Write a Post",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"parent_id\": \"71960fa7-9801-4d5d-8ae5-3713d7108688\", // Parent Id\n    \"location\": \"London, UK\",\n    \"content\": \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Tower Bridge arcu vehicula semper. Suspendisse potenti. Hyde Park aliquet magna eu, malesuada ex. In Covent Garden, porttitor nisl non ligula hendrerit, et eleifend enim gravida.\",\n    \"category\": \"SPORT\", // TECH, SPORT, FINANCE, NEWS\n    \"hashtags\": [ \"london\", \"lorem\", \"ipsum\" ],\n    \"permissions\": {\n        \"inherited\": {\n            \"view\": true,\n            \"edit\": true\n        },\n        \"view\": {\n            \"users\": [],\n            \"groups\": [2]\n        },\n        \"edit\": {\n            \"users\": [4,5],\n            \"groups\": []\n        }\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/tweets",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"tweets"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get My Posts",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/tweets?page=1&size=3",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"tweets"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "size",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get My Replies",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/groups/1",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"groups",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "[todo] Get the Tweet",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/tweets/fed08284-2cb6-4cb7-9021-e7e3e88adef0",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"tweets",
+										"fed08284-2cb6-4cb7-9021-e7e3e88adef0"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete a Tweet",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"something else\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_RESTful_URL}}/authors/1/tweets/fed08284-2cb6-4cb7-9021-e7e3e88adef0",
+									"host": [
+										"{{BASE_RESTful_URL}}"
+									],
+									"path": [
+										"authors",
+										"1",
+										"tweets",
+										"fed08284-2cb6-4cb7-9021-e7e3e88adef0"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
