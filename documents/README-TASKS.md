@@ -1,0 +1,32 @@
+- [ ] Author
+    - [ ] Group Management
+        - [ ] create a new group
+        - [ ] get my own groups
+        - [ ] get my own group
+        - [ ] delete a group
+        - [ ] update the group
+        - [ ] invitations
+            - [ ] invite a new group member
+            - [ ] get the list of sent invitations
+            - [ ] resend the invitation
+            - [ ] cancel an invitation
+        - [ ] members
+            - [ ] get the list of members + their types
+            - [ ] revoke a member
+    - [ ] Tweets
+        - [ ] write a new tweet
+        - [ ] get my tweets (post or reply)
+            - [ ] get the list of replies to my own tweet
+        - [ ] draft a tweet
+        - [ ] delete a tweet
+        - [ ] Permissions
+            - [ ] Add Permission
+            - [ ] Revoke Permission
+- [ ] Public
+    - [ ] Filter tweets
+    - [ ] Get the list of sub-posts
+    - [ ] Get the list of replies
+- [ ] Profile
+    - [ ] invitations
+        - [ ] get the list of sent invitations
+        - [ ] invite a new group member

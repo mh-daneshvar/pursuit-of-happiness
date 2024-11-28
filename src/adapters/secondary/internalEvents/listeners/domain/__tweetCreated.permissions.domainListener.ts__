@@ -1,0 +1,147 @@
+import { Injectable } from '@nestjs/common';
+import { OnEvent } from '@nestjs/event-emitter';
+import BaseListener from '@SecondaryAdapters/internalEvents/configs/base.listener';
+import IBasePayload from '@SecondaryAdapters/internalEvents/configs/base.payload';
+import { InternalDomainEvent } from '@Domain/sharedKernel/events/routes/internalDomainEvents.enum';
+import TweetsRepository from '@SecondaryAdapters/db/mysql/repositories/tweets.repository';
+import GroupsRepository from '@SecondaryAdapters/db/mysql/repositories/groups.repository';
+import PermissionsRepository from '@SecondaryAdapters/db/mysql/repositories/permissions.repository';
+import PermissionFactory from '@Domain/sharedKernel/factories/permission.factory';
+import { PermissionType } from '@Domain/sharedKernel/entities/types/permissionType.enum';
+import UsersRepository from '@SecondaryAdapters/db/mysql/repositories/users.repository';
+import MembersRepository from '@SecondaryAdapters/db/mysql/repositories/members.repository';
+import Tweet from '@Domain/sharedKernel/entities/tweet.entity';
+import Permission from '@Domain/sharedKernel/entities/permission.entity';
+
+@Injectable()
+export default class TweetCreatedPermissionsDomainListener extends BaseListener {
+  constructor(
+    private readonly permissionsRepository: PermissionsRepository,
+    private readonly groupsRepository: GroupsRepository,
+    private readonly tweetsRepository: TweetsRepository,
+    private readonly permissionFactory: PermissionFactory,
+    private readonly usersRepository: UsersRepository,
+    private readonly membersRepository: MembersRepository,
+  ) {
+    super();
+  }
+
+  @OnEvent(InternalDomainEvent.TWEET_CREATED)
+  async handle(payload: IBasePayload) {
+    const { tweetId, permissions } = payload?.event?.getDetails();
+
+    if (!permissions) {
+      return;
+    }
+
+    const tweet = await this.tweetsRepository.findById(tweetId);
+    if (!tweet) {
+      throw new Error('Tweet not found');
+    }
+
+    if (permissions?.inherited && tweet.parent) {
+      await this.handleInheritedPermissions(tweet);
+    } else {
+      await this.handleDirectPermissions(tweet, permissions);
+    }
+  }
+
+  private async handleInheritedPermissions(tweet: Tweet) {
+    const parentTweet = await this.tweetsRepository.findOneByAuthor(
+      tweet.author,
+      tweet.parent,
+    );
+    if (!parentTweet) {
+      throw new Error('Parent tweet not found');
+    }
+
+    const parentPermissions =
+      await this.permissionsRepository.findTweetPermissions(parentTweet);
+
+    for (const permission of parentPermissions) {
+      const clonedPermission = this.permissionFactory.cloneTweetPermission(
+        permission,
+        tweet,
+      );
+      await this.permissionsRepository.create(clonedPermission);
+    }
+  }
+
+  private async handleDirectPermissions(tweet: Tweet, permissions: any) {
+    await this.processPermissions(
+      tweet,
+      permissions?.view,
+      PermissionType.VIEW,
+    );
+    await this.processPermissions(
+      tweet,
+      permissions?.edit,
+      PermissionType.EDIT,
+    );
+  }
+
+  private async processPermissions(
+    tweet: Tweet,
+    permissionDetails: Record<string, any>, // todo: fix it
+    permissionType: PermissionType,
+  ) {
+    if (!permissionDetails) {
+      return;
+    }
+
+    const { users, groups } = permissionDetails;
+
+    if (Array.isArray(users)) {
+      await this.assignUserPermissions(users, tweet, permissionType);
+    }
+
+    if (Array.isArray(groups)) {
+      await this.assignGroupPermissions(groups, tweet, permissionType);
+    }
+  }
+
+  private async assignUserPermissions(
+    userIds: number[],
+    tweet: Tweet,
+    permissionType: PermissionType,
+  ) {
+    for (const userId of userIds) {
+      const user = await this.usersRepository.findById(userId);
+      const permission = this.permissionFactory.buildIndividualPermission(
+        user,
+        tweet,
+        permissionType,
+      );
+      await this.permissionsRepository.create(permission);
+    }
+  }
+
+  private async assignGroupPermissions(
+    groupIds: number[],
+    tweet: Tweet,
+    permissionType: PermissionType,
+  ) {
+    for (const groupId of groupIds) {
+      const group = await this.groupsRepository.findById(groupId);
+      const members =
+        await this.membersRepository.findMembersByGroupId(groupId);
+
+      let permission: Permission = new Permission();
+      for (const member of members) {
+        permission = this.permissionFactory.buildMembershipPermission(
+          member.user,
+          tweet,
+          permissionType,
+          group,
+          member,
+        );
+        await this.permissionsRepository.create(permission);
+      }
+
+      permission.id = null;
+      permission.member = null;
+      permission.user = null;
+      await this.permissionsRepository.create(permission);
+    }
+  }
+}

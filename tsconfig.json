@@ -1,0 +1,48 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2021",
+    "sourceMap": true,
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "incremental": true,
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "noImplicitAny": false,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
+    "resolveJsonModule": true,
+    "paths": {
+      "@PrimaryAdapters/*": [
+        "src/adapters/primary/*"
+      ],
+      "@SecondaryAdapters/*": [
+        "src/adapters/secondary/*"
+      ],
+      "@Common/*": [
+        "src/core/common/*"
+      ],
+      "@Config/*": [
+        "src/config/*"
+      ],
+      "@Errors/*": [
+        "src/core/common/errors/*"
+      ],
+      "@Domain/*": [
+        "src/core/domain/*"
+      ],
+      "@SharedKernelDomain/*": [
+        "src/core/domain/shared-kernel/*"
+      ],
+      "@OrdersDomain/*": [
+        "src/core/domain/orders/*"
+      ]
+    }
+  }
+}
