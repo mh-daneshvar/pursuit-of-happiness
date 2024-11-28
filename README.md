@@ -3,6 +3,9 @@
 This project demonstrates how to handle Access Control Lists (ACL) in large-scale projects like Twitter. It focuses on
 combining grouping and permissions to create a scalable and flexible solution.
 
+For more information or to connect with the author,
+visit [Mohammad Hassan Daneshvar's LinkedIn profile](https://www.linkedin.com/in/mohammad-hassan-daneshvar/).
+
 ---
 
 ## Overview
@@ -160,3 +163,10 @@ Design (DDD)** were implemented as much as time allowed.
 
 - The **Postman collection** and its related environment file are included in the `documents` directory.
 - Import these files into Postman to test the API endpoints seamlessly.
+
+---
+
+For further inquiries or to connect, feel free to reach out
+via [LinkedIn](https://www.linkedin.com/in/mohammad-hassan-daneshvar/).
+
+---
