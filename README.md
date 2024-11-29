@@ -90,16 +90,16 @@ When creating a tweet, access rules can be defined as follows:
 
 #### Permissions Example:
 
-```json
+```
 "permissions": {
-"view": {
-"users": [10, 20],
-"groups": [2, 7, 9001]
-},
-"edit": {
-"users": [4, 5],
-"groups": []
-}
+  "view": {
+    "users": [10, 20],
+    "groups": [2, 7, 9001]
+  },
+  "edit": {
+    "users": [4, 5],
+    "groups": []
+  }
 }
 ```
 
