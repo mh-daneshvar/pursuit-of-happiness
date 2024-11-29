@@ -142,20 +142,15 @@ Design (DDD)** were implemented as much as time allowed.
 
 ### Steps to Run
 
-1. Navigate to the `cicd/dev` directory.
-2. Build and run the application with Docker Compose:
+1. Build and run the application with Docker Compose:
    ```bash
-   docker-compose up --build
+   docker-compose -f cicd/dev/docker-compose.yaml up
    ```
-3. Start the application in development mode:
+2. Start the application in development mode:
    ```bash
    pnpm run start:dev
    ```
-4. Run database migrations to set up the schema:
-   ```bash
-   pnpm run migrations
-   ```
-5. Add sample users to the `users` table for testing purposes.
+3. Add sample users to the `users` table for testing purposes.
 
 ---
 
